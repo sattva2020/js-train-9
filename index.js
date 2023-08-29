@@ -8,10 +8,16 @@
  */
 function findElementGreaterThan(arr, num) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо undefined
-  // повертаємо undefined
+  if (!Array.isArray(arr)) {
+    return undefined;  // повертаємо undefined
+  }
+  
   // Використовуємо метод find для пошуку першого елементу, який є більшим за задане число num.
+  // let firstelem = 0;
+  const elementFind = arr.find(firstelem => firstelem > num);
   // Перевіряємо чи є елемент який задовільняє умову
   //Якщо так повертаємо елемент
+  console.log(elementFind);
   // Якщо ні повертаємо рядок Числа яке задовільняе умову не знайдено
 }
 
@@ -29,8 +35,13 @@ console.log(findElementGreaterThan([1, 2, 3, 4, 5], 3)); // Виведе 4
  */
 function findIndexByProperty(arr, name) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо -1
+  if (!Array.isArray(arr)) {
+    return -1;
+  }
   // Використовуємо метод findIndex для пошуку індексу об'єкта, властивість 'name' якого співпадає з заданим іменем.
+      const foundIndex = arr.findIndex(obj => obj.name === name);
   // Повертаємо знайдений індекс або -1, якщо об'єкт не знайдено.
+  return foundIndex;
 }
 
 console.log("Завдання: 2  ==============================");
@@ -55,8 +66,18 @@ console.log(
  */
 function findLastEvenNumber(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return 'Вхідний параметр має бути масивом';
+  }
   // За допомогою метода findLast знаходимо останнє парне число в масиві.
+  const lastEvenNumber = arr.findLast(num => num % 2 === 0);
   // Повертаємо знайдене число або 'Парних чисел не знайдено', якщо таке число не знайдено.
+  if (lastEvenNumber !== -1) {
+    return lastEvenNumber;
+  } else {
+    return 'Парних чисел не знайдено';
+  }
+
 }
 
 console.log("Завдання: 3 ==============================");
@@ -73,9 +94,14 @@ console.log(findLastEvenNumber([1, 2, 3, 4, 5])); // Виведе 4
  */
 function getSubArrayAndConvertToString(arr, startIdx) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+return "Вхідний параметр має бути масивом";
+}
   // За допомогою методу slice() отримуємо підмасив від заданого індексу до кінця масиву.
+  let subArray = arr.slice(startIdx);
   // За допомогою методу join() конвертуємо підмасив в рядок.
   // Повертаємо рядок.
+    return subArray.join(', '); 
 }
 
 console.log("Завдання: 4 ==============================");
@@ -97,9 +123,14 @@ console.log(
  */
 function getArrayKeys(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return 'Вхідний параметр має бути масивом';
+  }
   // За допомогою методу keys() отримуємо об'єкт ітератора, який містить ключі масиву.
+    const iterator = arr.keys(); 
   // Конвертуємо ітератор в масив за допомогою методу from.
   // Повертаємо масив ключів.
+  return Array.from(iterator);
 }
 
 console.log("Завдання: 5  ==============================");
@@ -115,10 +146,15 @@ console.log(getArrayKeys(["яблуко", "банан", "апельсин"])); /
  */
 function getPositiveArrayValues(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) return 'Вхідний параметр має бути масивом';
   // За допомогою методу values() отримуємо об'єкт ітератора, який містить значення масиву.
+  const ArrayValues = arr.values();
   // Конвертуємо ітератор в масив.
+  const arrayIterator = Array.from(ArrayValues);
   // За допомогою методу filter() отримуємо масив лише з додатніми значеннями.
+  let positiveArr = arr.filter(element => element > 0);
   // Повертаємо масив додатніх значень.
+  return positiveArr;
 }
 
 console.log("Завдання: 6  ==============================");
@@ -135,9 +171,13 @@ console.log(getPositiveArrayValues([-2, -1, 0, 1, 2])); // Виведе [1, 2]
  */
 function removeAndDouble(arr, startIdx) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) return 'Вхідний параметр має бути масивом';
   // За допомогою методу splice() видаляємо елементи масиву починаючи з заданого індексу.
+  const arraySplice = arr.splice(startIdx);
   // За допомогою методу map() подвоюємо кожен елемент масиву.
+  const doubleArray = arraySplice.map(element => element * 2);
   // Повертаємо масив подвоєних елементів.
+  return doubleArray;
 }
 
 console.log("Завдання: 7 ==============================");
